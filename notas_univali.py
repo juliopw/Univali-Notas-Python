@@ -1,11 +1,8 @@
-#	 _______________________________________________________________________________
-#	|	 		Old version of the script. May work with some changes.				|
-# 	|	 Versão antiga do script. Pode ser que funcione com algumas modificações.	|
-#	|								-	Python 2.7	-								|
-#	| 	 	Simula um navegador acessando a página da Univali, recolhendo as		|
-# 	|					informações de notas e mostrando na tela.					|
-#	|_______________________________________________________________________________|
-#
+#	Old version of the script. May work with some changes.
+# 	VersÃ£o antiga do script. Pode ser que funcione com algumas modificaÃ§Ãµes.
+#	Python 2.7
+#	Simula um navegador acessando a pÃ¡gina da Univali, recolhendo as
+# 	informaÃ§Ãµes de notas e mostrando na tela.
 
 # -*- coding: cp1252 -*-
 import mechanize
@@ -33,7 +30,7 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1)
 # Abre a url para que sejam preenchidas as informacoes de login
 br.open('https://intranet.univali.br/intranet/')
 
-# Seleciona o segundo formulario (indice 0) o primeiro é uma caixa de busca
+# Seleciona o segundo formulario (indice 0) o primeiro Ã© uma caixa de busca
 br.select_form(nr=1)
 
 # Credenciais do usuario
@@ -43,7 +40,7 @@ br.form['ca_senha'] = 'password'
 # Login
 br.submit()
 
-req = br.click_link(text='Portal do Aluno (Acadêmico/Financeiro)')
+req = br.click_link(text='Portal do Aluno (AcadÃªmico/Financeiro)')
 
 soup = BeautifulSoup(br.open(req))
 
@@ -107,14 +104,14 @@ for index in range(len(Medias)):
 
 # Estrutura do avaliacoes:
 
-#  avaliacoes[Materia][Mx][Atividade][0]	        Data da avaliação/trabalho
-#  avaliacoes[Materia][Mx][Atividade][1]	        Devolução oficial
+#  avaliacoes[Materia][Mx][Atividade][0]	        Data da avaliaÃ§Ã£o/trabalho
+#  avaliacoes[Materia][Mx][Atividade][1]	        DevoluÃ§Ã£o oficial
 #  avaliacoes[Materia][Mx][Atividade][2]	        Tipo
-#  avaliacoes[Materia][Mx][Atividade][3]	        Avaliação
+#  avaliacoes[Materia][Mx][Atividade][3]	        AvaliaÃ§Ã£o
 #  avaliacoes[Materia][Mx][Atividade][4]	        Peso
 #  avaliacoes[Materia][Mx][Atividade][5]	        Nota
-#  avaliacoes[Materia][Mx][Atividade][10]	        Código da disciplina
-#  avaliacoes[Materia][Mx][Atividade][11]	        Código do curso
+#  avaliacoes[Materia][Mx][Atividade][10]	        CÃ³digo da disciplina
+#  avaliacoes[Materia][Mx][Atividade][11]	        CÃ³digo do curso
 
 for index in range(len(Medias)):
     print('\n\n' + Medias[index][8].strip().title())
